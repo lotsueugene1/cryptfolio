@@ -6,27 +6,6 @@ export function formatUSD(amount) {
   })
 }
 
-export function createHolding(coin, quantity) {
-  const amount = Number(quantity)
-
-  if (!Number.isFinite(amount) || amount <= 0) {
-    throw new Error('Enter a quantity greater than zero.')
-  }
-
-  if (!Number.isFinite(coin.price) || coin.price <= 0 ||
-      !Number.isFinite(amount * coin.price)) {
-    throw new Error('This purchase amount is unavailable.')
-  }
-
-  return {
-    coinId: coin.id,
-    name: coin.name,
-    symbol: coin.symbol,
-    quantity: amount,
-    purchasePrice: coin.price,
-  }
-}
-
 export function calculateTotals(holdings, coins) {
   let invested = 0
   let currentValue = 0
