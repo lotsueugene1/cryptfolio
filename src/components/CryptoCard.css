@@ -19,6 +19,21 @@
   font-weight: 600;
 }
 
+.crypto-card h3 a {
+  color: #203858;
+  text-decoration: none;
+}
+
+.crypto-card h3 a:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.crypto-card h3 a:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
+
 .crypto-card span {
   color: #526176;
 }
