@@ -33,6 +33,21 @@
   font-weight: 600;
 }
 
+.portfolio-table tbody th a {
+  color: #203858;
+  text-decoration: none;
+}
+
+.portfolio-table tbody th a:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.portfolio-table tbody th a:focus-visible {
+  outline: 0.125rem solid #2563eb;
+  outline-offset: 0.25rem;
+}
+
 .portfolio-table td {
   font-variant-numeric: tabular-nums;
 }
