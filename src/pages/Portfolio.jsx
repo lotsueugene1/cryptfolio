@@ -3,10 +3,19 @@ import { formatUSD } from '../utils/calculations.js'
 import './Portfolio.css'
 
 function Portfolio() {
-  const [holdings] = useState(() => {
+  const [holdings, setHoldings] = useState(() => {
     const savedHoldings = localStorage.getItem('cryptfolio-holdings')
     return savedHoldings ? JSON.parse(savedHoldings) : []
   })
+
+  function removeHolding(index) {
+    const updatedHoldings = holdings.filter((holding, holdingIndex) =>
+      holdingIndex !== index
+    )
+
+    setHoldings(updatedHoldings)
+    localStorage.setItem('cryptfolio-holdings', JSON.stringify(updatedHoldings))
+  }
 
   return (
     <div>
@@ -23,6 +32,7 @@ function Portfolio() {
                 <th scope="col">Quantity</th>
                 <th scope="col">Purchase price</th>
                 <th scope="col">Invested</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -34,6 +44,15 @@ function Portfolio() {
                   <td>{holding.quantity}</td>
                   <td>{formatUSD(holding.purchasePrice)}</td>
                   <td>{formatUSD(holding.quantity * holding.purchasePrice)}</td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => removeHolding(index)}
+                      aria-label={`Remove ${holding.name} from portfolio`}
+                    >
+                      Remove
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
