@@ -2,17 +2,15 @@ import { useEffect, useState } from 'react'
 import PortfolioSummary from '../components/PortfolioSummary.jsx'
 import AssetForm from '../components/AssetForm.jsx'
 import CryptoCard from '../components/CryptoCard.jsx'
+import { usePortfolio } from '../contexts/PortfolioContext.jsx'
 import { getCoins } from '../services/coinlore.js'
 import { calculateTotals, formatUSD } from '../utils/calculations.js'
 import './Dashboard.css'
 
 function Dashboard() {
+  const { holdings, addHolding } = usePortfolio()
   const [coins, setCoins] = useState([])
   const [selectedCoin, setSelectedCoin] = useState(null)
-  const [holdings, setHoldings] = useState(() => {
-    const savedHoldings = localStorage.getItem('cryptfolio-holdings')
-    return savedHoldings ? JSON.parse(savedHoldings) : []
-  })
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -23,19 +21,8 @@ function Dashboard() {
       .finally(() => setLoading(false))
   }, [])
 
-  function addAsset(coin, quantity) {
-    const newHolding = {
-      coinId: coin.id,
-      name: coin.name,
-      symbol: coin.symbol,
-      quantity: Number(quantity),
-      purchasePrice: coin.price,
-    }
-
-    const updatedHoldings = [...holdings, newHolding]
-
-    setHoldings(updatedHoldings)
-    localStorage.setItem('cryptfolio-holdings', JSON.stringify(updatedHoldings))
+  function handleAdd(coin, quantity) {
+    addHolding(coin, quantity)
     setSelectedCoin(null)
   }
 
@@ -69,7 +56,7 @@ function Dashboard() {
         <AssetForm
           key={selectedCoin.id}
           coin={selectedCoin}
-          onAdd={addAsset}
+          onAdd={handleAdd}
           onCancel={() => setSelectedCoin(null)}
         />
       )}
