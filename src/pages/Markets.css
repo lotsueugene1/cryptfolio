@@ -53,10 +53,40 @@
   font-weight: 600;
 }
 
+.market-table td:nth-child(3),
+.market-table th:nth-child(3),
 .market-table td:last-child,
 .market-table th:last-child {
   text-align: right;
   font-variant-numeric: tabular-nums;
+}
+
+.market-table button {
+  padding: 8px 0;
+  border: 0;
+  background-color: transparent;
+  color: #2563eb;
+  font: inherit;
+  cursor: pointer;
+}
+
+.market-table button:hover {
+  text-decoration: underline;
+}
+
+.market-table button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
+
+.market-table .market-form-row td {
+  padding: 0 24px 24px;
+  background-color: #f8fafc;
+  text-align: left;
+}
+
+.market-form-row .asset-form {
+  margin-top: 0;
 }
 
 .market-table tbody tr:last-child th,
