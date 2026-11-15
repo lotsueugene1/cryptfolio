@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard.jsx'
 import Markets from './pages/Markets.jsx'
 import Portfolio from './pages/Portfolio.jsx'
 import CoinDetails from './pages/CoinDetails.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/markets" element={<Markets />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/coins/:coinId" element={<CoinDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
   )
