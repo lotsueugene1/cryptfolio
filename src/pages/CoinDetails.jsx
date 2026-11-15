@@ -2,6 +2,16 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getCoinById } from '../services/coinlore.js'
 import { formatUSD } from '../utils/calculations.js'
+import './CoinDetails.css'
+
+function formatChange(value) {
+  const sign = value > 0 ? '+' : ''
+  return `${sign}${value.toFixed(2)}%`
+}
+
+function changeClass(value) {
+  return value >= 0 ? 'coin-change-positive' : 'coin-change-negative'
+}
 
 function CoinDetails() {
   const { coinId } = useParams()
@@ -25,33 +35,39 @@ function CoinDetails() {
   }
 
   return (
-    <div>
+    <div className="coin-details">
       <h1>{coin.name} ({coin.symbol})</h1>
 
-      <dl>
-        <div>
+      <dl className="coin-stats">
+        <div className="coin-stat">
           <dt>Price</dt>
           <dd>{formatUSD(coin.price)}</dd>
         </div>
-        <div>
+        <div className="coin-stat">
           <dt>Market cap</dt>
           <dd>{formatUSD(coin.marketCap)}</dd>
         </div>
-        <div>
+        <div className="coin-stat">
           <dt>24-hour volume</dt>
           <dd>{formatUSD(coin.volume24)}</dd>
         </div>
-        <div>
+        <div className="coin-stat">
           <dt>1-hour change</dt>
-          <dd>{coin.change1h.toFixed(2)}%</dd>
+          <dd className={changeClass(coin.change1h)}>
+            {formatChange(coin.change1h)}
+          </dd>
         </div>
-        <div>
+        <div className="coin-stat">
           <dt>24-hour change</dt>
-          <dd>{coin.change24h.toFixed(2)}%</dd>
+          <dd className={changeClass(coin.change24h)}>
+            {formatChange(coin.change24h)}
+          </dd>
         </div>
-        <div>
+        <div className="coin-stat">
           <dt>7-day change</dt>
-          <dd>{coin.change7d.toFixed(2)}%</dd>
+          <dd className={changeClass(coin.change7d)}>
+            {formatChange(coin.change7d)}
+          </dd>
         </div>
       </dl>
     </div>
