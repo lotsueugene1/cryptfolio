@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
+import AssetForm from '../components/AssetForm.jsx'
+import { usePortfolio } from '../contexts/PortfolioContext.jsx'
 import { getMarketCoins } from '../services/coinlore.js'
 import { formatUSD } from '../utils/calculations.js'
 import './Markets.css'
 
 function Markets() {
+  const { addHolding } = usePortfolio()
   const [coins, setCoins] = useState([])
   const [search, setSearch] = useState('')
+  const [selectedCoin, setSelectedCoin] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -21,6 +25,11 @@ function Markets() {
     coin.name.toLowerCase().includes(searchText) ||
     coin.symbol.toLowerCase().includes(searchText)
   )
+
+  function handleAdd(coin, quantity) {
+    addHolding(coin, quantity)
+    setSelectedCoin(null)
+  }
 
   return (
     <div>
@@ -47,15 +56,39 @@ function Markets() {
                   <th scope="col">Cryptocurrency</th>
                   <th scope="col">Symbol</th>
                   <th scope="col">Price</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredCoins.map((coin) => (
-                  <tr key={coin.id}>
-                    <th scope="row">{coin.name}</th>
-                    <td>{coin.symbol}</td>
-                    <td>{formatUSD(coin.price)}</td>
-                  </tr>
+                  <Fragment key={coin.id}>
+                    <tr>
+                      <th scope="row">{coin.name}</th>
+                      <td>{coin.symbol}</td>
+                      <td>{formatUSD(coin.price)}</td>
+                      <td>
+                        <button
+                          type="button"
+                          onClick={() => setSelectedCoin(coin)}
+                          aria-label={`Add ${coin.name} to portfolio`}
+                        >
+                          Add
+                        </button>
+                      </td>
+                    </tr>
+
+                    {selectedCoin?.id === coin.id && (
+                      <tr className="market-form-row">
+                        <td colSpan="4">
+                          <AssetForm
+                            coin={selectedCoin}
+                            onAdd={handleAdd}
+                            onCancel={() => setSelectedCoin(null)}
+                          />
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
                 ))}
               </tbody>
             </table>
