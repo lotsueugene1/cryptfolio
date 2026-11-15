@@ -1,0 +1,106 @@
+.asset-form {
+  margin-top: 24px;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e5eaf1;
+  border-radius: 8px;
+}
+
+.asset-form h2 {
+  margin: 0 0 24px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.asset-form-fields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.asset-form label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  color: #526176;
+}
+
+.asset-form input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #203858;
+  font: inherit;
+}
+
+.asset-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+  gap: 12px;
+}
+
+.asset-form-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #526176;
+}
+
+.asset-form-detail p,
+.asset-form-detail output {
+  margin: 0;
+  color: #203858;
+  font-size: 24px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.asset-form button {
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #2563eb;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.asset-form button:hover {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.asset-form .asset-form-submit {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+.asset-form .asset-form-submit:hover {
+  background-color: #1d4ed8;
+}
+
+.asset-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.asset-form input:focus-visible,
+.asset-form button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .asset-form-fields {
+    grid-template-columns: 1fr;
+  }
+}
