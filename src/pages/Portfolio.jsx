@@ -1,21 +1,9 @@
-import { useState } from 'react'
+import { usePortfolio } from '../contexts/PortfolioContext.jsx'
 import { formatUSD } from '../utils/calculations.js'
 import './Portfolio.css'
 
 function Portfolio() {
-  const [holdings, setHoldings] = useState(() => {
-    const savedHoldings = localStorage.getItem('cryptfolio-holdings')
-    return savedHoldings ? JSON.parse(savedHoldings) : []
-  })
-
-  function removeHolding(index) {
-    const updatedHoldings = holdings.filter((holding, holdingIndex) =>
-      holdingIndex !== index
-    )
-
-    setHoldings(updatedHoldings)
-    localStorage.setItem('cryptfolio-holdings', JSON.stringify(updatedHoldings))
-  }
+  const { holdings, removeHolding } = usePortfolio()
 
   return (
     <div>
