@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import AssetForm from '../components/AssetForm.jsx'
 import { usePortfolio } from '../contexts/PortfolioContext.jsx'
 import { getMarketCoins } from '../services/coinlore.js'
@@ -63,7 +64,11 @@ function Markets() {
                 {filteredCoins.map((coin) => (
                   <Fragment key={coin.id}>
                     <tr>
-                      <th scope="row">{coin.name}</th>
+                      <th scope="row">
+                        <Link className="market-coin-link" to={`/coins/${coin.id}`}>
+                          {coin.name}
+                        </Link>
+                      </th>
                       <td>{coin.symbol}</td>
                       <td>{formatUSD(coin.price)}</td>
                       <td>
