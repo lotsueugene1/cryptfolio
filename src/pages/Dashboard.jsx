@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import PortfolioSummary from '../components/PortfolioSummary.jsx'
 import AssetForm from '../components/AssetForm.jsx'
 import CryptoCard from '../components/CryptoCard.jsx'
-import { getCoins } from '../services/coinPaprika.js'
+import { getCoins } from '../services/coinlore.js'
 import { calculateTotals, formatUSD } from '../utils/calculations.js'
 import './Dashboard.css'
 

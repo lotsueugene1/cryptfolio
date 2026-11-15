@@ -13,7 +13,9 @@ export function calculateTotals(holdings, coins) {
 
   for (const holding of holdings) {
     invested += holding.quantity * holding.purchasePrice
-    const coin = coins.find((coin) => coin.id === holding.coinId)
+    const coin = coins.find((coin) =>
+      coin.id === holding.coinId || coin.symbol === holding.symbol
+    )
 
     if (coin) {
       currentValue += holding.quantity * coin.price
