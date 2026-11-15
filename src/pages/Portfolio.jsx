@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { usePortfolio } from '../contexts/PortfolioContext.jsx'
 import { formatUSD } from '../utils/calculations.js'
 import './Portfolio.css'
@@ -27,7 +28,9 @@ function Portfolio() {
               {holdings.map((holding, index) => (
                 <tr key={`${holding.coinId}-${index}`}>
                   <th scope="row">
-                    {holding.name} ({holding.symbol})
+                    <Link to={`/coins/${holding.coinId}`}>
+                      {holding.name} ({holding.symbol})
+                    </Link>
                   </th>
                   <td>{holding.quantity}</td>
                   <td>{formatUSD(holding.purchasePrice)}</td>
