@@ -1,13 +1,15 @@
-import Header from './components/Header.jsx'
+import Layout from './components/Layout.jsx'
 
 function App() {
   return (
-    <Header
+    <Layout
       title="CRYPTFOLIO"
       dashboardLabel="Dashboard"
       marketsLabel="Markets"
       portfolioLabel="Portfolio"
-    />
+    >
+      <h1>Dashboard</h1>
+    </Layout>
   )
 }
 
