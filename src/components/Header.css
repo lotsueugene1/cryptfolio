@@ -1,39 +1,39 @@
 .header {
   background-color: #ffffff;
-  border-bottom: 1px solid #e5eaf1;
+  border-bottom: 0.0625rem solid #e5eaf1;
 }
 
 .header-content {
   width: 100%;
-  max-width: 1200px;
+  max-width: 75rem;
   margin: 0 auto;
-  padding: 0 32px;
-  min-height: 88px;
+  padding: 0 2rem;
+  min-height: 5.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 2.5rem;
 }
 
 .header-title {
   color: #2563eb;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: -0.8px;
+  letter-spacing: -0.05rem;
   text-decoration: none;
 }
 
 .header-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 2.25rem;
 }
 
 .header-links a {
-  padding: 30px 0;
-  border-bottom: 2px solid transparent;
+  padding: 1.875rem 0;
+  border-bottom: 0.125rem solid transparent;
   color: #526176;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
 }
@@ -45,25 +45,25 @@
 }
 
 .header a:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
+  outline: 0.125rem solid currentColor;
+  outline-offset: 0.25rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 37.5rem) {
   .header-content {
-    padding: 20px 24px 0;
+    padding: 1.25rem 1.5rem 0;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 0.75rem;
   }
 
   .header-links {
     width: 100%;
     justify-content: space-between;
-    gap: 16px;
+    gap: 1rem;
   }
 
   .header-links a {
-    padding: 14px 0;
+    padding: 0.875rem 0;
   }
 }

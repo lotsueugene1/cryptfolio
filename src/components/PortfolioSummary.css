@@ -1,37 +1,37 @@
 .portfolio-summary {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 24px;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .summary-card {
   min-width: 0;
-  padding: 24px;
+  padding: 1.5rem;
   background-color: #ffffff;
-  border: 1px solid #e5eaf1;
-  border-radius: 8px;
+  border: 0.0625rem solid #e5eaf1;
+  border-radius: 0.5rem;
 }
 
 .summary-card h2 {
-  margin: 0 0 16px;
+  margin: 0 0 1rem;
   color: #526176;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
 }
 
 .summary-card p {
   margin: 0;
   color: #203858;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .portfolio-summary {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 1rem;
   }
 }

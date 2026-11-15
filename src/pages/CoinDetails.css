@@ -1,28 +1,28 @@
 .coin-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin: 24px 0 0;
+  gap: 1.25rem;
+  margin: 1.5rem 0 0;
 }
 
 .coin-stat {
   min-width: 0;
-  padding: 24px;
+  padding: 1.5rem;
   background-color: #ffffff;
-  border: 1px solid #e5eaf1;
-  border-radius: 8px;
+  border: 0.0625rem solid #e5eaf1;
+  border-radius: 0.5rem;
 }
 
 .coin-stat dt {
   color: #526176;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
 }
 
 .coin-stat dd {
-  margin: 16px 0 0;
+  margin: 1rem 0 0;
   color: #203858;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
@@ -36,9 +36,9 @@
   color: #b42318;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .coin-stats {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 1rem;
   }
 }

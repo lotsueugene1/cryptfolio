@@ -1,20 +1,20 @@
 .dashboard-market {
-  margin-top: 32px;
+  margin-top: 2rem;
 }
 
 .dashboard-market h2 {
-  margin: 0 0 20px;
-  font-size: 24px;
+  margin: 0 0 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
 .crypto-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 1.25rem;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .crypto-grid {
     grid-template-columns: 1fr;
   }
