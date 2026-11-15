@@ -3,7 +3,7 @@ import PortfolioSummary from '../components/PortfolioSummary.jsx'
 import AssetForm from '../components/AssetForm.jsx'
 import CryptoCard from '../components/CryptoCard.jsx'
 import { usePortfolio } from '../contexts/PortfolioContext.jsx'
-import { getCoins } from '../services/coinlore.js'
+import { getMarketCoins } from '../services/coinlore.js'
 import { calculateTotals, formatUSD } from '../utils/calculations.js'
 import './Dashboard.css'
 
@@ -15,7 +15,7 @@ function Dashboard() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    getCoins()
+    getMarketCoins()
       .then((coinData) => setCoins(coinData))
       .catch(() => setError('Prices could not be loaded.'))
       .finally(() => setLoading(false))
@@ -27,6 +27,10 @@ function Dashboard() {
   }
 
   const totals = calculateTotals(holdings, coins)
+  const featuredSymbols = ['BTC', 'ETH', 'SOL']
+  const featuredCoins = coins.filter((coin) =>
+    featuredSymbols.includes(coin.symbol)
+  )
 
   return (
     <div>
@@ -42,7 +46,7 @@ function Dashboard() {
         {loading && <p role="status">Loading prices...</p>}
         {error && <p role="alert">{error}</p>}
         <div className="crypto-grid">
-          {coins.map((coin) => (
+          {featuredCoins.map((coin) => (
             <CryptoCard
               key={coin.id}
               coin={coin}
