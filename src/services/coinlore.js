@@ -14,10 +14,3 @@ export async function getMarketCoins() {
     price: Number(coin.price_usd),
   }))
 }
-
-export async function getCoins() {
-  const coins = await getMarketCoins()
-  const symbols = ['BTC', 'ETH', 'SOL']
-
-  return coins.filter((coin) => symbols.includes(coin.symbol))
-}
