@@ -3,6 +3,7 @@ import Layout from './components/Layout.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import Markets from './pages/Markets.jsx'
 import Portfolio from './pages/Portfolio.jsx'
+import CoinDetails from './pages/CoinDetails.jsx'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/markets" element={<Markets />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/coins/:coinId" element={<CoinDetails />} />
       </Routes>
     </Layout>
   )
