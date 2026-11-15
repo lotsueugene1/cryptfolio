@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getCoins } from '../services/coinlore.js'
+import { getMarketCoins } from '../services/coinlore.js'
 import { formatUSD } from '../utils/calculations.js'
 import './Markets.css'
 
@@ -10,7 +10,7 @@ function Markets() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    getCoins()
+    getMarketCoins()
       .then((coinData) => setCoins(coinData))
       .catch(() => setError('Prices could not be loaded.'))
       .finally(() => setLoading(false))

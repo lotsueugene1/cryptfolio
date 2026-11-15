@@ -1,4 +1,4 @@
-export async function getCoins() {
+export async function getMarketCoins() {
   const response = await fetch('https://api.coinlore.net/api/tickers/?start=0&limit=100')
 
   if (!response.ok) {
@@ -6,14 +6,18 @@ export async function getCoins() {
   }
 
   const result = await response.json()
+
+  return result.data.map((coin) => ({
+    id: coin.id,
+    name: coin.name,
+    symbol: coin.symbol,
+    price: Number(coin.price_usd),
+  }))
+}
+
+export async function getCoins() {
+  const coins = await getMarketCoins()
   const symbols = ['BTC', 'ETH', 'SOL']
 
-  return result.data
-    .filter((coin) => symbols.includes(coin.symbol))
-    .map((coin) => ({
-      id: coin.id,
-      name: coin.name,
-      symbol: coin.symbol,
-      price: Number(coin.price_usd),
-    }))
+  return coins.filter((coin) => symbols.includes(coin.symbol))
 }
