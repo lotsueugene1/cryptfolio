@@ -1,4 +1,5 @@
 import Layout from './components/Layout.jsx'
+import Dashboard from './pages/Dashboard.jsx'
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       marketsLabel="Markets"
       portfolioLabel="Portfolio"
     >
-      <h1>Dashboard</h1>
+      <Dashboard />
     </Layout>
   )
 }
