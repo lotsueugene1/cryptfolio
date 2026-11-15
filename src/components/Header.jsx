@@ -1,17 +1,18 @@
+import { Link } from 'react-router-dom'
 import './Header.css'
 
 function Header(props) {
   return (
     <header className="header">
       <div className="header-content">
-        <a className="header-title" href="/">
+        <Link className="header-title" to="/dashboard">
           {props.title}
-        </a>
+        </Link>
 
         <nav className="header-links" aria-label="Main navigation">
-          <a href="/dashboard">{props.dashboardLabel}</a>
-          <a href="/markets">{props.marketsLabel}</a>
-          <a href="/portfolio">{props.portfolioLabel}</a>
+          <Link to="/dashboard">{props.dashboardLabel}</Link>
+          <Link to="/markets">{props.marketsLabel}</Link>
+          <Link to="/portfolio">{props.portfolioLabel}</Link>
         </nav>
       </div>
     </header>
