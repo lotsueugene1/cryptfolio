@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { formatUSD } from '../utils/calculations.js'
 import './CryptoCard.css'
 
@@ -5,7 +6,9 @@ function CryptoCard(props) {
   return (
     <article className="crypto-card">
       <div className="crypto-card-heading">
-        <h3>{props.coin.name}</h3>
+        <h3>
+          <Link to={`/coins/${props.coin.id}`}>{props.coin.name}</Link>
+        </h3>
         <span>{props.coin.symbol}</span>
       </div>
       <p className="crypto-card-price">{formatUSD(props.coin.price)}</p>
