@@ -5,6 +5,7 @@ import './Markets.css'
 
 function Markets() {
   const [coins, setCoins] = useState([])
+  const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -15,6 +16,12 @@ function Markets() {
       .finally(() => setLoading(false))
   }, [])
 
+  const searchText = search.toLowerCase()
+  const filteredCoins = coins.filter((coin) =>
+    coin.name.toLowerCase().includes(searchText) ||
+    coin.symbol.toLowerCase().includes(searchText)
+  )
+
   return (
     <div>
       <h1>Markets</h1>
@@ -23,26 +30,37 @@ function Markets() {
       {error && <p role="alert">{error}</p>}
 
       {!loading && !error && (
-        <div className="market-table-container">
-          <table className="market-table">
-            <thead>
-              <tr>
-                <th scope="col">Cryptocurrency</th>
-                <th scope="col">Symbol</th>
-                <th scope="col">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              {coins.map((coin) => (
-                <tr key={coin.id}>
-                  <th scope="row">{coin.name}</th>
-                  <td>{coin.symbol}</td>
-                  <td>{formatUSD(coin.price)}</td>
+        <>
+          <label className="market-search">
+            Search markets
+            <input
+              type="search"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+            />
+          </label>
+
+          <div className="market-table-container">
+            <table className="market-table">
+              <thead>
+                <tr>
+                  <th scope="col">Cryptocurrency</th>
+                  <th scope="col">Symbol</th>
+                  <th scope="col">Price</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {filteredCoins.map((coin) => (
+                  <tr key={coin.id}>
+                    <th scope="row">{coin.name}</th>
+                    <td>{coin.symbol}</td>
+                    <td>{formatUSD(coin.price)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
     </div>
   )
