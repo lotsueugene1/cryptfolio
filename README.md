@@ -1,16 +1,32 @@
-# React + Vite
+# Cryptfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A simple cryptocurrency portfolio tracker built with React and Vite. Market prices come from the CoinLore API.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Browse and search cryptocurrencies.
+- View coin prices, market caps, and price changes.
+- Add and remove portfolio holdings.
+- Track total invested, current value, and profit or loss.
 
-## React Compiler
+Holdings are saved in your browser using localStorage. Adding a holding uses the current market price as its purchase price.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run locally
 
-## Expanding the Oxlint configuration
+With Node.js and npm installed:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```sh
+npm install
+npm run dev
+```
+
+Open the local URL shown in your terminal.
+
+## Commands
+
+```sh
+npm run build    # Build for production
+npm run preview  # Preview the production build
+npm run lint     # Check code with Oxlint
+npx vitest run   # Run tests
+```
